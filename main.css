@@ -1,49 +1,288 @@
-:root {
-    --primary-hue: 200;
-    --primary: hsl(var(--primary-hue), 100%, 50%);
-    --secondary: hsl(calc(var(--primary-hue) + 120), 100%, 50%);
-    --neon-effect: 0 0 15px hsl(var(--primary-hue), 100%, 50%);
+/* RESET / BASE STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    overflow-x: hidden;
-    background: #0a0a0a;
-    color: white;
-    font-family: 'Courier New', monospace;
+  font-family: "Inter", sans-serif; /* or Roboto, etc. */
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+  color: #fff;
+  min-height: 100vh;
 }
 
-#three-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -2;
+/* PAGE WRAPPER ensures content is centered & spaced nicely */
+.page-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.glass-container {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--primary);
-    box-shadow: var(--neon-effect);
+.site-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.holographic {
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: hologram 3s infinite;
+.header-nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+}
+.header-nav a:hover {
+  color: #f39cff; /* subtle hover color */
 }
 
-@keyframes hologram {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
+/* MAIN GRID LAYOUT
+   2 columns: main content + sidebar
+*/
+.main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
 }
 
-/* Add more cyberpunk-style animations */
+/* HERO BOX */
+.hero-box {
+  grid-column: 1 / 2; /* or span both if you want */
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #101010;
+  border: 2px solid #9b59b6; /* neon outline color */
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 250px;
+  margin-right: 20px;
+}
+
+.subtitle {
+  text-transform: uppercase;
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+
+.hero-title {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+.hero-title .highlight {
+  color: #9b59b6; /* highlight name in neon color */
+}
+
+.hero-desc {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+/* Social / CTA Buttons in hero */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social-btn,
+.main-cta {
+  padding: 8px 16px;
+  border: 2px solid #9b59b6;
+  background: none;
+  color: #9b59b6;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 0.9rem;
+}
+.social-btn:hover,
+.main-cta:hover {
+  background-color: #9b59b6;
+  color: #fff;
+}
+
+/* HERO RIGHT */
+.hero-right {
+  width: 260px; /* or auto, as you prefer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.hero-avatar {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  background-color: #101010;
+  border: 2px solid #9b59b6;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 100%; /* ensures it spans vertically as well */
+}
+
+.sidebar h3 {
+  margin-bottom: 10px;
+}
+
+.tools-title {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.tools-list {
+  list-style: disc inside;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.about-desc {
+  margin-top: 10px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+/* CARDS SECTION (bottom) 
+   Spans across both columns for a full-width area
+*/
+.cards-section {
+  grid-column: 1 / 3;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
+}
+
+/* INDIVIDUAL CARD */
+.card {
+  background-color: #101010;
+  border: 2px solid #9b59b6;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.card h4 {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+/* Sub-sections inside card (like contact info) */
+.card-sub {
+  margin: 10px 0;
+}
+
+.card-sub p {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: #bbb;
+}
+
+/* The "clock" card example */
+.clock-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.clock-display {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #9b59b6;
+}
+
+/* The "Design Works" card */
+.design-works {
+  position: relative;
+}
+.card-link {
+  text-decoration: none;
+  color: #9b59b6;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.2rem;
+}
+.card-link:hover {
+  color: #fff;
+}
+
+/* The "Now" card example (just minor styling) */
+.now-card p {
+  margin-bottom: 5px;
+  color: #bbb;
+}
+
+/* The "Countries I visited" card example (map-card) */
+
+/* The "palette" card for colors */
+.palette-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.color-palette {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.red { background-color: #ff5252; }
+.orange { background-color: #ffca3a; }
+.blue { background-color: #3498db; }
+.purple { background-color: #9b59b6; }
+.green { background-color: #27ae60; }
+
+/* The "Playground" card example */
+.playground-card {
+  position: relative;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE TWEAKS */
+@media (max-width: 900px) {
+  .main-grid {
+    grid-template-columns: 1fr; /* stack hero & sidebar */
+  }
+  .hero-box {
+    margin-bottom: 20px;
+  }
+  .sidebar {
+    margin-top: 0;
+    min-height: auto;
+  }
+  .cards-section {
+    grid-column: 1 / 2; /* single column */
+  }
+}
