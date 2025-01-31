@@ -3,24 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Neon-Themed Portfolio with Animated Card</title>
+  <title>Neon-Themed Portfolio with Old-School Clock</title>
   <!-- Link to external CSS -->
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- MAIN WRAPPER (for overall page spacing) -->
   <div class="page-wrapper">
-
-    <!-- HEADER: Simple top bar with nav links -->
-    <header class="header">
-      <h1 class="site-title">welcome</h1>
-      <nav class="header-nav">
-        <a href="#works">Design Works</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
 
     <!-- MAIN CONTENT uses a grid: hero on the left, about on the right -->
     <main class="main-grid">
@@ -32,7 +21,10 @@
           <p class="subtitle">welcome</p>
           <h2 class="hero-title">
             Hi, I'm <span class="highlight">William Romac</span>,
-            a computer science student at Fordham University with intetest 
+            a computer science student at Fordham University with interest in finance,
+            outdoor-sy activities, and making cool projects. 
+            I’m currently learning how to use various Python libraries 
+            and building my own websites with functional backends.
           </h2>
           <p class="hero-desc">
             Feel free to reach out to me if you have any projects in mind,
@@ -50,7 +42,7 @@
         <div class="hero-right">
           <img 
             src="avatar.png" 
-            alt="3D avatar of Gianmarco" 
+            alt="3D avatar of William" 
             class="hero-avatar"
           />
         </div>
@@ -73,7 +65,7 @@
         </ul>
         <p class="about-desc">
           Beyond coding, I'm passionate about design, illustration, animation 
-          and 3D modelling and traveling. An unusual hobby of mine is collecting 
+          and 3D modelling, and traveling. An unusual hobby of mine is collecting 
           vintage passports; they're interesting pieces of history to me.
         </p>
         <p class="about-desc">
@@ -98,10 +90,48 @@
           </div>
         </div>
 
+        <!-- 
+          OLD-SCHOOL FLIP CLOCK CARD
+          (Replaces your old clock code).
+        -->
         <div class="card clock-card">
-          <h2 class="clock-display">5:24 AM</h2>
+          <div id="clock">
+            <!-- HOURS -->
+            <div class="wrap-hours">
+              <div class="top-before">--</div>
+              <div class="top-after">--</div>
+              <div class="wrap-bottom">
+                <div class="bottom-before">--</div>
+                <div class="bottom-after">--</div>
+              </div>
+            </div>
+
+            <!-- MINUTES -->
+            <div class="wrap-minutes">
+              <div class="top-before">--</div>
+              <div class="top-after">--</div>
+              <div class="wrap-bottom">
+                <div class="bottom-before">--</div>
+                <div class="bottom-after">--</div>
+              </div>
+            </div>
+
+            <!-- SECONDS (optional). Remove if you prefer no seconds. -->
+            <div class="wrap-seconds">
+              <div class="top-before">--</div>
+              <div class="top-after">--</div>
+              <div class="wrap-bottom">
+                <div class="bottom-before">--</div>
+                <div class="bottom-after">--</div>
+              </div>
+            </div>
+
+            <!-- AM/PM indicator -->
+            <div class="ampm" id="ampm"></div>
+          </div>
         </div>
 
+        <!-- Design Works card -->
         <div class="card design-works" id="works">
           <h4>Design Works</h4>
           <a href="#" class="card-link">↗</a>
@@ -110,8 +140,10 @@
         <!-- Card row 2 -->
         <div class="card works-card">
           <div class="info-box">
-            <a href="photo.html" class=".info-section" id="photo-button">  <h4>Photograohy</h4></a>
-        </div>
+            <a href="photo.html" id="photo-button">
+              <h4>Photography</h4>
+            </a>
+          </div>
         </div>
 
         <div class="card now-card">
@@ -131,7 +163,7 @@
           <a href="#" class="card-link">↗</a>
         </div>
 
-        <!-- NEW ANIMATION CARD -->
+        <!-- SWIRL ANIMATION CARD (unchanged) -->
         <div class="card animation-card">
           <canvas id="c"></canvas>
         </div>
