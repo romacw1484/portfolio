@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Neon-Themed Portfolio</title>
+  <title>Neon-Themed Portfolio with Animated Card</title>
   <!-- Link to external CSS -->
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -31,34 +31,19 @@
         <div class="hero-left">
           <p class="subtitle">welcome</p>
           <h2 class="hero-title">
-            Hi, I'm <span class="highlight">Gianmarco Cavallo</span>,
-            a software developer with strong focus on user experience, 
-            animations and micro interactions.
+            Hi, I'm <span class="highlight">William Romac</span>,
+            a computer science student at Fordham University with intetest 
           </h2>
           <p class="hero-desc">
             Feel free to reach out to me if you have any projects in mind,
             or just to say hello.
           </p>
           <div class="hero-buttons">
-            <a href="#" class="social-btn">
-              <!-- GitHub icon can go here -->
-              GitHub
-            </a>
-            <a href="#" class="social-btn">
-              <!-- LinkedIn icon can go here -->
-              LinkedIn
-            </a>
-            <a href="#" class="social-btn">
-              <!-- Dribbble icon can go here -->
-              Dribbble
-            </a>
-            <a href="#" class="social-btn">
-              <!-- Another icon or link -->
-              ✉️
-            </a>
-            <a href="#" class="main-cta">
-              Book a call
-            </a>
+            <a href="#" class="social-btn">GitHub</a>
+            <a href="#" class="social-btn">LinkedIn</a>
+            <a href="#" class="social-btn">Dribbble</a>
+            <a href="#" class="social-btn">✉️</a>
+            <a href="#" class="main-cta">Book a call</a>
           </div>
         </div>
         <!-- Right side: 3D avatar or any image -->
@@ -98,10 +83,9 @@
         </p>
       </aside>
 
-      <!-- LOWER “CARDS” (like the screenshot) -->
+      <!-- LOWER “CARDS” SECTION -->
       <div class="cards-section">
-
-        <!-- Card row 1 -->
+        <!-- Example card row 1 -->
         <div class="card">
           <h4>Let's start working together!</h4>
           <div class="card-sub">
@@ -113,9 +97,11 @@
             <p>LinkedIn<br>GitHub<br>Medium<br>Discord</p>
           </div>
         </div>
+
         <div class="card clock-card">
           <h2 class="clock-display">5:24 AM</h2>
         </div>
+
         <div class="card design-works" id="works">
           <h4>Design Works</h4>
           <a href="#" class="card-link">↗</a>
@@ -123,35 +109,33 @@
 
         <!-- Card row 2 -->
         <div class="card works-card">
-          <h4>Works</h4>
-          <p>WIP</p>
+          <div class="info-box">
+            <a href="photo.html" class=".info-section" id="photo-button">  <h4>Photograohy</h4></a>
         </div>
+        </div>
+
         <div class="card now-card">
           <h4>Now</h4>
           <p>what's that?</p>
           <p>Currently working as freelancer</p>
         </div>
+
         <div class="card map-card">
           <h4>Countries I visited</h4>
           <a href="#" class="card-link">↗</a>
         </div>
 
-        <!-- Card row 3 -->
-        <div class="card palette-card">
-          <h4>Colors</h4>
-          <div class="color-palette">
-            <div class="color-circle red"></div>
-            <div class="color-circle orange"></div>
-            <div class="color-circle blue"></div>
-            <div class="color-circle purple"></div>
-            <div class="color-circle green"></div>
-          </div>
-        </div>
+        <!-- Another card row (Playground & the animation card) -->
         <div class="card playground-card">
           <h4>Playground</h4>
           <a href="#" class="card-link">↗</a>
         </div>
-      </div>
+
+        <!-- NEW ANIMATION CARD -->
+        <div class="card animation-card">
+          <canvas id="c"></canvas>
+        </div>
+      </div><!-- /.cards-section -->
 
     </main>
 
@@ -162,5 +146,7 @@
 
   </div><!-- /.page-wrapper -->
 
+  <!-- Link to external JS -->
+  <script src="script.js"></script>
 </body>
 </html>
