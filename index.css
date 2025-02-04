@@ -1,3 +1,4 @@
+
 /* RESET / BASE STYLES */
 * {
   margin: 0;
@@ -406,3 +407,4 @@ body {
     text-align: center;
     color: #eaeaea; /* Light text color */
     font-family: 'Roboto', sans-serif; /* Ensuring consistency in fonts */
+}
