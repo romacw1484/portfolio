@@ -146,6 +146,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  margin-right: 50px;
 }
 .hero-avatar {
   max-width: 150%;
@@ -217,7 +218,7 @@ body {
 /* CARD 1: CONTACT CARD as BUTTON with BACKGROUND IMAGE */
 .contact-card-button {
   /* Override default card background to show an image */
-  background: url("retro-chat.png") center/cover no-repeat;
+  background: url("pics/retro-chat.png") center/cover no-repeat;
   background-color: transparent; /* So the image shows through */
   color: #fff;
   border: 4px, solid, rgb(255, 255, 255); 
@@ -226,7 +227,6 @@ body {
   width: 100%;
   cursor: pointer;
 }
-
 /* Hover effect if desired */
 .contact-card-button:hover {
   filter: brightness(.8);
@@ -235,55 +235,69 @@ body {
 /* Override the giant 45vmin so the clock fits inside its 280px-wide card. 
    Also reduce or remove the blur/contrast for visibility.
 */
-.clock {
-  /* Instead of 45vmin, try a smaller fixed size */
-  font-size: 7vmin;
-	line-height: 0.8;
-	position: static;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	font-style: italic;
-	font-weight: 1000;
-	letter-spacing: -0.05em;
-	font-variant-numeric: tabular-nums;
+
+.clock-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; 
+  width: 100%;
+  position: relative;
+  background: linear-gradient(
+    115deg,  /* Vertical stripes */
+    rgba(0, 119, 255, 0.8) 10%,
+    rgba(92, 163, 162, 0.8) 20%,
+    rgba(255,255,0,0.8) 30%,
+    rgba(167, 238, 113, 0.8) 40%,
+    rgba(0,0,255,0.8) 50%,
+    rgba(75,0,130,0.8) 60%,
+    rgba(111, 0, 255, 0.8) 70%,
+    rgba(23, 255, 166, 0.8) 80%
+  );
 }
 
-/* The “clock-inner” background & filter can cause heavy distortion.
-   Tone them down or remove them for now:
-*/
+
+.clock {
+  line-height: 0.8;
+  font-style: italic;
+  font-weight: 1000;
+  letter-spacing: -0.05em;
+  color: #ffffff; /* White numbers */
+  position: relative;
+  z-index: 2;
+  font-size: 6rem; /* Adjusts to fit inside the box */
+}
+
+/* Background Effect */
 .clock-inner {
   position: absolute;
   top: 0; bottom: 0; left: 0; right: 0;
-  display: grid;
-  place-content: center;
-  background: repeating-radial-gradient(
-    circle at -150% -25%,
-    #805353,
-    #d20b0b calc(var(--density) / 2),
-    #e90909 var(--density)
-  );
-  filter: contrast(400%); /* Instead of 2000%, e.g. 400% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: contrast(1000%);
 }
 
-/* The digits themselves */
 .numbers {
-  font-size: 1em;   /* ( = 5rem from parent .clock ) */
-  filter: none;     /* remove blur or set it smaller, e.g. blur(0.01em) */
-  transform: rotate(0deg);   /* remove or reduce the tilt if you like */
-  opacity: 0.9;     /* near full opacity so digits are visible */
+  font-size: 1.1em;
 }
 
-/* If you want a mild tilt effect for digits, keep transform: rotate(6deg);
-   but reduce the blur and increase opacity. 
-*/
+.hour {
+  transform: translateX(0.2em);
+}
 
-/* Make sure digits are actually visible: */
-.hour,
 .min {
-  color: #ff0303;  /* White digits */
+  transform: translateX(-0.2em);
 }
+
+.clock-overlay {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  opacity: 0.8; /* Make sure it is visible */
+  mix-blend-mode: lighten; /* Ensures blending with background */
+  transform: skewX(-10deg); /* Skews lines to look like your second image */
+}
+
 
 
 
