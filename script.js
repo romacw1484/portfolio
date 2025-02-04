@@ -258,14 +258,20 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  var time = new Date();
+function updateClock() {
+  let time = new Date();
   let h = time.getHours();
   let m = time.getMinutes();
+  
+  // Add leading zero for single-digit numbers
+  document.getElementById("hour").innerHTML = h < 10 ? "0" + h : h;
+  document.getElementById("min").innerHTML = m < 10 ? "0" + m : m;
+}
 
-  document.getElementById("hour").innerHTML = h;
-  document.getElementById("min").innerHTML = m;
-});
+// Update clock every second
+setInterval(updateClock, 1000);
+updateClock(); // Initial call
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
