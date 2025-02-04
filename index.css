@@ -54,7 +54,7 @@ body {
 .hero-box {
   grid-column: 1 / 2; 
   background-color: #101010;
-  border: 2px solid #9b59b6;
+  border: 2px solid #c07036;
   border-radius: 8px;
   padding: 20px;
   display: flex;
@@ -80,7 +80,7 @@ body {
   margin-bottom: 15px;
 }
 .hero-title .highlight {
-  color: #9b59b6;
+  color: #ff8c00;
 }
 
 .hero-desc {
@@ -98,20 +98,45 @@ body {
 
 .social-btn,
 .main-cta {
-  padding: 8px 16px;
-  border: 2px solid #9b59b6;
-  background: none;
-  color: #9b59b6;
-  text-decoration: none;
-  font-weight: 500;
-  border-radius: 6px;
-  transition: background-color 0.2s, color 0.2s;
-  font-size: 0.9rem;
+  align-items: center;
+    appearance: none;
+    background-color: #bf7190;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #c49a3f 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500; /* Slightly bold for button text */
+    font-size: 20px; /* Larger button text */
+    height: 48px;
+    justify-content: space-between;
+    line-height: 1;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    user-select: none;
+    white-space: nowrap
 }
+
 .social-btn:hover,
 .main-cta:hover {
-  background-color: #9b59b6;
-  color: #fff;
+  background-color: #ffffff;
+  color: #bf7190;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+.social-btn:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
 }
 
 /* Hero Right */
@@ -121,16 +146,17 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  margin-right: 50px;
 }
 .hero-avatar {
-  max-width: 100%;
+  max-width: 150%;
   border-radius: 8px;
 }
 
 /* SIDEBAR */
 .sidebar {
-  background-color: #101010;
-  border: 2px solid #9b59b6;
+  background-color: #000000;
+  border: 2px solid #b4cad3;;
   border-radius: 8px;
   padding: 20px;
   min-height: 100%;
@@ -157,7 +183,7 @@ body {
   color: #ccc;
 }
 
-/* CARDS SECTION */
+/* CARDS SECTION LAYOUT */
 .cards-section {
   grid-column: 1 / 3;
   display: grid;
@@ -165,13 +191,15 @@ body {
   gap: 20px;
 }
 
+/* BASE CARD STYLES */
 .card {
-  background-color: #101010;
-  border: 2px solid #9b59b6;
+  background-color: #101010; /* default background */
+  border: 2px solid #59b66a;
   border-radius: 8px;
   padding: 20px;
 }
 
+/* HEADINGS & TEXT */
 .card h4 {
   margin-bottom: 10px;
   font-size: 1.05rem;
@@ -180,25 +208,101 @@ body {
 .card-sub {
   margin: 10px 0;
 }
+
 .card-sub p {
   font-size: 0.9rem;
   margin-top: 5px;
   color: #bbb;
 }
 
-/* Clock Card */
-.clock-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* CARD 1: CONTACT CARD as BUTTON with BACKGROUND IMAGE */
+.contact-card-button {
+  /* Override default card background to show an image */
+  background: url("pics/retro-chat.png") center/cover no-repeat;
+  background-color: transparent; /* So the image shows through */
+  color: #fff;
+  border: 4px, solid, rgb(255, 255, 255); 
+
+  display: block;
+  width: 100%;
+  cursor: pointer;
 }
-.clock-display {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #9b59b6;
+/* Hover effect if desired */
+.contact-card-button:hover {
+  filter: brightness(.8);
 }
 
-/* Works, Now, Map, etc. */
+/* Override the giant 45vmin so the clock fits inside its 280px-wide card. 
+   Also reduce or remove the blur/contrast for visibility.
+*/
+
+.clock-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; 
+  width: 100%;
+  position: relative;
+  background: linear-gradient(
+    115deg,  /* Vertical stripes */
+    rgba(0, 119, 255, 0.8) 10%,
+    rgba(92, 163, 162, 0.8) 20%,
+    rgba(255,255,0,0.8) 30%,
+    rgba(167, 238, 113, 0.8) 40%,
+    rgba(0,0,255,0.8) 50%,
+    rgba(75,0,130,0.8) 60%,
+    rgba(111, 0, 255, 0.8) 70%,
+    rgba(23, 255, 166, 0.8) 80%
+  );
+}
+
+
+.clock {
+  line-height: 0.8;
+  font-style: italic;
+  font-weight: 1000;
+  letter-spacing: -0.05em;
+  color: #ffffff; /* White numbers */
+  position: relative;
+  z-index: 2;
+  font-size: 6rem; /* Adjusts to fit inside the box */
+}
+
+/* Background Effect */
+.clock-inner {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: contrast(1000%);
+}
+
+.numbers {
+  font-size: 1.1em;
+}
+
+.hour {
+  transform: translateX(0.2em);
+}
+
+.min {
+  transform: translateX(-0.2em);
+}
+
+.clock-overlay {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  opacity: 0.8; /* Make sure it is visible */
+  mix-blend-mode: lighten; /* Ensures blending with background */
+  transform: skewX(-10deg); /* Skews lines to look like your second image */
+}
+
+
+
+
+
+/* OTHER CARDS (Design, Works, Now, Map, Playground) */
 .design-works,
 .works-card,
 .now-card,
@@ -206,6 +310,8 @@ body {
 .playground-card {
   position: relative;
 }
+
+/* For the little link arrow (↗) */
 .card-link {
   text-decoration: none;
   color: #9b59b6;
@@ -214,9 +320,11 @@ body {
   right: 20px;
   font-size: 1.2rem;
 }
+
 .card-link:hover {
   color: #fff;
 }
+
 
 /* ANIMATION CARD */
 .animation-card {
@@ -237,7 +345,7 @@ body {
   /* Remove/override any padding if you had it */
   padding: 0; 
   margin: 0;
-  border: 2px solid #9b59b6; /* or your chosen border */
+  border: 2px solid #ffffff; /* or your chosen border */
   border-radius: 8px;
   overflow: hidden; /* Ensures the canvas won't overflow */
 }
@@ -298,3 +406,4 @@ body {
     text-align: center;
     color: #eaeaea; /* Light text color */
     font-family: 'Roboto', sans-serif; /* Ensuring consistency in fonts */
+}

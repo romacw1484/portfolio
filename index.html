@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Neon-Themed Portfolio with Old-School Clock</title>
+  <title>My Personal Website</title>
   <!-- Link to external CSS -->
   <link rel="stylesheet" href="index.css">
 </head>
-<body>
 
+<body>
   <div class="page-wrapper">
 
     <!-- MAIN CONTENT uses a grid: hero on the left, about on the right -->
@@ -21,27 +21,31 @@
           <p class="subtitle">welcome</p>
           <h2 class="hero-title">
             Hi, I'm <span class="highlight">William Romac</span>,
-            a computer science student at Fordham University with interest in finance,
-            outdoor-sy activities, and making cool projects. 
-            I’m currently learning how to use various Python libraries 
-            and building my own websites with functional backends.
+            a Computer Science student at Fordham University with 
+            interest in finance, outdoor-sy activities, 
+            and making cool projects. 
           </h2>
+
           <p class="hero-desc">
-            Feel free to reach out to me if you have any projects in mind,
-            or just to say hello.
+            I am currently in the spring semester of Junior year, taking 
+            cources more aligned with Statisctics and Information / Data Fusion. 
+            My side projectes include currently learning how to use various 
+            Python libraries and building my own websites with functional backends.</p>
           </p>
+          
+
           <div class="hero-buttons">
-            <a href="#" class="social-btn">GitHub</a>
-            <a href="#" class="social-btn">LinkedIn</a>
-            <a href="#" class="social-btn">Dribbble</a>
-            <a href="#" class="social-btn">✉️</a>
-            <a href="#" class="main-cta">Book a call</a>
+            <a href="https://github.com/romacw1484" class="social-btn">GitHub</a>
+            <a href="https://www.linkedin.com/in/william-romac-95378224a/" class="social-btn">LinkedIn</a>
+            <a href="#" class="social-btn">Personal Card</a>
+            <a href="#" class="social-btn" id="fireButton">Don't Press Me !</a>
           </div>
         </div>
+
         <!-- Right side: 3D avatar or any image -->
         <div class="hero-right">
           <img 
-            src="avatar.png" 
+            src="pics/NewMemoji.png" 
             alt="3D avatar of William" 
             class="hero-avatar"
           />
@@ -52,16 +56,15 @@
       <aside class="sidebar">
         <h3>About me</h3>
         <p>
-          Hi, I'm Gianmarco, a front-end software developer from Italy.
+          Originally from Delray Beach, FL. I am now in school in 
+          NYC enjoying the big city and it's energy. 
         </p>
         <p class="tools-title">My primary tools of choice include:</p>
         <ul class="tools-list">
-          <li>JavaScript</li>
-          <li>React</li>
-          <li>Solidjs</li>
-          <li>Astro</li>
-          <li>Svelte</li>
-          <li>Nodejs</li>
+          <li>Python</li>
+          <li>C++</li>
+          <li>HTML, CSS, JS</li>
+          
         </ul>
         <p class="about-desc">
           Beyond coding, I'm passionate about design, illustration, animation 
@@ -76,92 +79,83 @@
       </aside>
 
       <!-- LOWER “CARDS” SECTION -->
-      <div class="cards-section">
-        <!-- Example card row 1 -->
-        <div class="card">
-          <h4>Let's start working together!</h4>
-          <div class="card-sub">
-            <p>Contact Details</p>
-            <p>contact@gianmarcocavallo.com<br>Italy</p>
-          </div>
-          <div class="card-sub">
-            <p>Socials</p>
-            <p>LinkedIn<br>GitHub<br>Medium<br>Discord</p>
-          </div>
-        </div>
+<div class="cards-section">
 
-        <!-- 
-          OLD-SCHOOL FLIP CLOCK CARD
-          (Replaces your old clock code).
-        -->
-        <div class="card clock-card">
-          <div id="clock">
-            <!-- HOURS -->
-            <div class="wrap-hours">
-              <div class="top-before">--</div>
-              <div class="top-after">--</div>
-              <div class="wrap-bottom">
-                <div class="bottom-before">--</div>
-                <div class="bottom-after">--</div>
-              </div>
+  <!-- CARD 1: CONTACT CARD as a BUTTON with BACKGROUND IMAGE -->
+  <button 
+    class="card contact-card-button" 
+    onclick="window.open('https://github.com/romacw1484', '_blank');">
+  </button>
+
+  <!-- CARD 2: FLIP CLOCK -->
+
+  <div class="card clock-card">
+    <div class="clock">
+        <div class="clock-inner">
+            <div class="numbers">
+                <div class="hour" id="hour">9</div>
+                <div class="min" id="min">41</div>
             </div>
-
-            <!-- MINUTES -->
-            <div class="wrap-minutes">
-              <div class="top-before">--</div>
-              <div class="top-after">--</div>
-              <div class="wrap-bottom">
-                <div class="bottom-before">--</div>
-                <div class="bottom-after">--</div>
-              </div>
-            </div>
-
-            <!-- SECONDS (optional). Remove if you prefer no seconds. -->
-            <div class="wrap-seconds">
-              <div class="top-before">--</div>
-              <div class="top-after">--</div>
-              <div class="wrap-bottom">
-                <div class="bottom-before">--</div>
-                <div class="bottom-after">--</div>
-              </div>
-            </div>
-
-            <!-- AM/PM indicator -->
-            <div class="ampm" id="ampm"></div>
-          </div>
         </div>
+        <div class="clock-overlay"></div>
+    </div>
+</div>
 
-        <!-- Design Works card -->
-        <div class="card design-works" id="works">
-          <h4>Design Works</h4>
-          <a href="#" class="card-link">↗</a>
-        </div>
 
-        <!-- Card row 2 -->
-        <div class="card works-card">
-          <div class="info-box">
-            <a href="photo.html" id="photo-button">
-              <h4>Photography</h4>
-            </a>
-          </div>
-        </div>
+  <!-- 
+  
+  
+  <div class="clock">
+	<div class="clock-inner">
+		<div class="numbers" contenteditable>
+			<div class="hour" id="hour">9</div>
+			<div class="min" id="min">41</div>
+		</div>
+	</div>
+	<div class="clock-overlay"></div>
+</div>
+  
+  
+  
+  
+  
+  -->
 
-        <div class="card now-card">
-          <h4>Now</h4>
-          <p>what's that?</p>
-          <p>Currently working as freelancer</p>
-        </div>
+  <!-- CARD 3: DESIGN WORKS -->
+  <div class="card design-works" id="works">
+    <h4>Design Works</h4>
+    <a href="#" class="card-link">↗</a>
+  </div>
 
-        <div class="card map-card">
-          <h4>Countries I visited</h4>
-          <a href="#" class="card-link">↗</a>
-        </div>
+  <!-- CARD 4: PHOTOGRAPHY -->
+  <div class="card works-card">
+    <div class="info-box">
+      <a href="photo.html" id="photo-button">
+        <h4>Photography</h4>
+      </a>
+    </div>
+  </div>
 
-        <!-- Another card row (Playground & the animation card) -->
-        <div class="card playground-card">
-          <h4>Playground</h4>
-          <a href="#" class="card-link">↗</a>
-        </div>
+  <!-- CARD 5: NOW -->
+  <div class="card now-card">
+    <h4>Now</h4>
+    <p>what's that?</p>
+    <p>Currently working as freelancer</p>
+  </div>
+
+  <!-- CARD 6: COUNTRIES I VISITED -->
+  <div class="card map-card">
+    <h4>Countries I visited</h4>
+    <a href="#" class="card-link">↗</a>
+  </div>
+
+  <!-- CARD 7: PLAYGROUND -->
+  <div class="card playground-card">
+    <h4>Playground</h4>
+    <a href="#" class="card-link">↗</a>
+  </div>
+
+
 
         <!-- SWIRL ANIMATION CARD (unchanged) -->
         <div class="card animation-card">
@@ -173,7 +167,7 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <p>© 2024 • Crafted with ❤️ using Astro by Gianmarco.</p>
+      <p style="font-family: 'Courier New', Courier, monospace;">© 2025 • Made by <span class="highlight">William Romac</span>.</p>
     </footer>
 
   </div><!-- /.page-wrapper -->
