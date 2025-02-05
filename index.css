@@ -349,6 +349,71 @@ body {
   color: #fff;
 }
 
+/* Styling the "Now" box */
+.now-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Green online dot positioned at the top */
+.online-dot {
+  width: 30px;
+  height: 30px;
+  background-color: #2ecc71; /* Green */
+  border-radius: 50%;
+  position: absolute;
+  top: 25px; /* Moves it to the upper boundary */
+  left: 10%;
+  transform: translateX(-50%);
+  box-shadow: 1 1 30px #3f7254;
+}
+
+/* Pinging effect */
+.online-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: #2ecc71;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  animation: ping 1.5s infinite;
+}
+
+/* Keyframes for the pinging animation */
+@keyframes ping {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Smooth text transition */
+#now-text {
+  font-family: fantasy;
+  
+  color: #fff;
+  
+  letter-spacing: 1px;
+ 
+  transition: opacity 0.5s ease-in-out;
+  margin-top: 20px; /* Space below the dot */
+}
+
 
 /* ANIMATION CARD */
 .animation-card {

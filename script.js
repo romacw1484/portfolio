@@ -373,3 +373,18 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+const nowActivities = [
+  "Currently doing school work 📓",
+  "Running the New York Botanical Gardens right now! 🏃",
+  "Messing with my Raspberry Pi 💻",
+  "Exploring NYC coffee shops ☕",
+  "Building interactive web projects!",
+  "Studying for exams 📚"
+];
+
+function updateNow() {
+  const nowBox = document.getElementById("now-text");
+  nowBox.innerText = nowActivities[Math.floor(Math.random() * nowActivities.length)];
+}
+
+setInterval(updateNow, 10000); // Changes every 5 seconds
