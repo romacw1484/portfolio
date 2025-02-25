@@ -5,37 +5,35 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log(typeof Globe); // Debugging check
+
   const visitedCountries = ["USA", "FRA", "ITA", "ESP", "JPN"]; // List of visited countries
 
-  // Initialize Globe
-  const world = Globe()
-      .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-night.jpg")
-      .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
-      .backgroundColor("#000") // Dark background
-      .showAtmosphere(true)
-      .hexPolygonResolution(3)
-      .hexPolygonMargin(0.3)
-      .hexPolygonColor(({ properties: d }) =>
-          visitedCountries.includes(d.ISO_A3) ? "rgba(0,255,0,0.7)" : "rgba(255,255,255,0.15)"
-      );
-
-  // ** Fetch world map data **
   fetch("https://unpkg.com/world-atlas@2/countries-110m.json")
-      .then((res) => res.json())
-      .then((worldData) => {
-          const countries = topojson.feature(worldData, worldData.objects.countries);
-          world.hexPolygonsData(countries.features); // Set country polygons
-          document.getElementById("globe-container").appendChild(world); // Attach Globe to container
-      })
-      .catch((err) => console.error("Failed to load world data:", err));
+    .then((res) => res.json())
+    .then((worldData) => {
+      const countries = topojson.feature(worldData, worldData.objects.countries);
 
-  // ** Make globe rotate automatically **
-  function autoRotateGlobe() {
+      // Initialize Globe AFTER fetching the data
+      const world = Globe()
+        .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-night.jpg")
+        .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
+        .backgroundColor("#000")
+        .showAtmosphere(true)
+        .hexPolygonsData(countries.features)
+        .hexPolygonResolution(3)
+        .hexPolygonMargin(0.3)
+        .hexPolygonColor(({ properties: d }) =>
+          visitedCountries.includes(d.ISO_A3) ? "rgba(0,255,0,0.7)" : "rgba(255,255,255,0.15)"
+        );
+
+      document.getElementById("globe-container").appendChild(world.domElement);
+
+      // ** Enable Auto Rotation ** (now works)
       world.controls().autoRotate = true;
       world.controls().autoRotateSpeed = 0.5; // Slow smooth rotation
-  }
-
-  autoRotateGlobe(); // Start rotation
+    })
+    .catch((err) => console.error("Failed to load world data:", err));
 });
 
 
