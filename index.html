@@ -6,6 +6,12 @@
   <title>My Personal Website</title>
   <!-- Link to external CSS -->
   <link rel="stylesheet" href="index.css">
+
+  <!-- Import Globe.js and TopoJSON -->
+  <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.23.6/dist/globe.gl.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+
+
 </head>
 
 <body>
@@ -114,9 +120,9 @@
   <div class="card contact1-card-button">
     <div class="info-box">
       <a href="photo.html" id="photo-button">
+        Photography
       </a>
     </div>
-    Photography
   </div>
 
   <!-- CARD 5: NOW -->
@@ -129,10 +135,11 @@
   
 
   <!-- CARD 6: COUNTRIES I VISITED -->
-  <div class="card map-card">
+
+  <div class="card globe-card">
     <h4>Countries I visited</h4>
-    <a href="#" class="card-link">↗</a>
-  </div>
+    <div id="globe-container"></div>
+</div>
 
   <!-- CARD 7: PLAYGROUND -->
   <div class="card playground-card">

@@ -2,6 +2,41 @@
 // 1) Fireworks Code (OPTIONAL)
 //    Only runs if there's a button with id="fireButton" in your HTML.
 //
+document.addEventListener("DOMContentLoaded", () => {
+  const visitedCountries = ["USA", "FRA", "ITA", "ESP", "JPN"]; // Countries you visited
+
+  // Initialize Globe
+  const world = Globe()
+      .globeImageUrl("//unpkg.com/three-globe/example/img/earth-night.jpg")
+      .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
+      .backgroundColor("#000") // Dark theme
+      .showAtmosphere(true)
+      .hexPolygonResolution(3)
+      .hexPolygonMargin(0.3)
+      .hexPolygonColor(({ properties: d }) =>
+          visitedCountries.includes(d.ISO_A3) ? "rgba(0,255,0,0.7)" : "rgba(255,255,255,0.15)"
+      );
+
+  // Fetch world data and initialize
+  fetch("https://unpkg.com/world-atlas@2/countries-110m.json")
+      .then((res) => res.json())
+      .then((worldData) => {
+          const countries = topojson.feature(worldData, worldData.objects.countries);
+          world.hexPolygonsData(countries.features); // Set country data
+
+          document.getElementById("globe-container").appendChild(world); // Append to container
+      })
+      .catch((err) => console.error("Failed to load world data:", err));
+
+  // Make globe rotate automatically
+  function autoRotateGlobe() {
+      world.controls().autoRotate = true;
+      world.controls().autoRotateSpeed = 0.5; // Slow smooth rotation
+  }
+
+  autoRotateGlobe(); // Start rotation
+});
+
 
 document.addEventListener("DOMContentLoaded", function() {
   let fireCanvas, fireCtx;
@@ -271,7 +306,6 @@ function updateClock() {
 // Update clock every second
 setInterval(updateClock, 1000);
 updateClock(); // Initial call
-
 
 
 document.addEventListener("DOMContentLoaded", function() {

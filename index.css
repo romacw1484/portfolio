@@ -314,21 +314,17 @@ body {
   background-color: transparent; /* So the image shows through */
   color: #ffffff;
   border: 4px, solid, rgb(255, 255, 255); 
-  cursor: pointer;
-  font-size: 28px;
-  font-family: 'Segoe UI';
-  font-weight: bold;
+  
 }
 
 #photo-button {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  margin-top: 10px;
   color: #FCFCFD; /* Keep text visible */
-  background: transparent !important; /* Ensure no background */
-  border: none !important; /* Ensure no border */
-  box-shadow: none !important; /* Remove any shadow */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold;
+  font-size: 28px;
+  font-family: 'Segoe UI';
 }
 
 #photo-button:hover {
@@ -412,6 +408,22 @@ body {
  
   transition: opacity 0.5s ease-in-out;
   margin-top: 20px; /* Space below the dot */
+}
+
+.globe-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  position: relative;
+  height: 300px;
+}
+
+#globe-container {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 
