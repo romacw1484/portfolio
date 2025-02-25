@@ -2,14 +2,16 @@
 // 1) Fireworks Code (OPTIONAL)
 //    Only runs if there's a button with id="fireButton" in your HTML.
 //
+
+
 document.addEventListener("DOMContentLoaded", () => {
-  const visitedCountries = ["USA", "FRA", "ITA", "ESP", "JPN"]; // Countries you visited
+  const visitedCountries = ["USA", "FRA", "ITA", "ESP", "JPN"]; // List of visited countries
 
   // Initialize Globe
   const world = Globe()
-      .globeImageUrl("//unpkg.com/three-globe/example/img/earth-night.jpg")
-      .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
-      .backgroundColor("#000") // Dark theme
+      .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-night.jpg")
+      .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
+      .backgroundColor("#000") // Dark background
       .showAtmosphere(true)
       .hexPolygonResolution(3)
       .hexPolygonMargin(0.3)
@@ -17,18 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
           visitedCountries.includes(d.ISO_A3) ? "rgba(0,255,0,0.7)" : "rgba(255,255,255,0.15)"
       );
 
-  // Fetch world data and initialize
+  // ** Fetch world map data **
   fetch("https://unpkg.com/world-atlas@2/countries-110m.json")
       .then((res) => res.json())
       .then((worldData) => {
           const countries = topojson.feature(worldData, worldData.objects.countries);
-          world.hexPolygonsData(countries.features); // Set country data
-
-          document.getElementById("globe-container").appendChild(world); // Append to container
+          world.hexPolygonsData(countries.features); // Set country polygons
+          document.getElementById("globe-container").appendChild(world); // Attach Globe to container
       })
       .catch((err) => console.error("Failed to load world data:", err));
 
-  // Make globe rotate automatically
+  // ** Make globe rotate automatically **
   function autoRotateGlobe() {
       world.controls().autoRotate = true;
       world.controls().autoRotateSpeed = 0.5; // Slow smooth rotation
