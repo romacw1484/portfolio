@@ -5,35 +5,49 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log(typeof Globe); // Debugging check
+  console.log("Globe Type:", typeof Globe);
 
-  const visitedCountries = ["USA", "FRA", "ITA", "ESP", "JPN"]; // List of visited countries
+  const visitedCountries = ["USA", "FRA", "ITA", "ESP", "JPN"];
 
-  fetch("https://unpkg.com/world-atlas@2/countries-110m.json")
-    .then((res) => res.json())
-    .then((worldData) => {
-      const countries = topojson.feature(worldData, worldData.objects.countries);
+  setTimeout(() => { // ⏳ Delays execution slightly
+    const globeContainer = document.getElementById("globe-container");
+    console.log("Globe Container Exists:", globeContainer);
 
-      // Initialize Globe AFTER fetching the data
-      const world = Globe()
-        .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-night.jpg")
-        .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
-        .backgroundColor("#000")
-        .showAtmosphere(true)
-        .hexPolygonsData(countries.features)
-        .hexPolygonResolution(3)
-        .hexPolygonMargin(0.3)
-        .hexPolygonColor(({ properties: d }) =>
-          visitedCountries.includes(d.ISO_A3) ? "rgba(0,255,0,0.7)" : "rgba(255,255,255,0.15)"
-        );
+    if (!globeContainer) {
+      console.error("Error: #globe-container NOT found in DOM!");
+      return;
+    }
 
-      document.getElementById("globe-container").appendChild(world.domElement);
+    fetch("https://unpkg.com/world-atlas@2/countries-110m.json")
+      .then((res) => res.json())
+      .then((worldData) => {
+        const countries = topojson.feature(worldData, worldData.objects.countries);
 
-      // ** Enable Auto Rotation ** (now works)
-      world.controls().autoRotate = true;
-      world.controls().autoRotateSpeed = 0.5; // Slow smooth rotation
-    })
-    .catch((err) => console.error("Failed to load world data:", err));
+        if (typeof Globe === "function") {
+          const world = Globe()
+            .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-night.jpg")
+            .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
+            .backgroundColor("#000")
+            .showAtmosphere(true)
+            .hexPolygonsData(countries.features)
+            .hexPolygonResolution(3)
+            .hexPolygonMargin(0.3)
+            .hexPolygonColor(({ properties: d }) =>
+              visitedCountries.includes(d.ISO_A3) ? "rgba(0,255,0,0.7)" : "rgba(255,255,255,0.15)"
+            );
+
+          console.log("World DOM Element:", world.domElement);
+          globeContainer.appendChild(world); // 🌎 Append the globe
+
+          // Enable auto-rotate
+          world.controls().autoRotate = true;
+          world.controls().autoRotateSpeed = 0.5;
+        } else {
+          console.error("Error: Globe.js not loaded properly.");
+        }
+      })
+      .catch((err) => console.error("Failed to load world data:", err));
+  }, 500); // 🔥 500ms delay ensures DOM is loaded
 });
 
 
