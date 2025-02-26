@@ -257,13 +257,54 @@ body {
   );
 }
 
+.journal-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #121212; /* Dark theme */
+  border: 2px solid #040d49; /* Matches other buttons */
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+
+.journal-box:hover {
+  background-color: #10123b;
+  transform: translateY(-3px);
+}
+
+.journal-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.journal-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.journal-subtitle {
+  font-size: 16px;
+  color: #c49a3f; /* Gold accent */
+  margin-top: 5px;
+}
+
 
 .clock {
   line-height: 0.8;
   font-style: italic;
   font-weight: 1000;
   letter-spacing: -0.05em;
-  color: #ffffff; /* White numbers */
+  color: #ddeab0; /* White numbers */
   position: relative;
   z-index: 2;
   font-size: 6rem; /* Adjusts to fit inside the box */
@@ -424,6 +465,72 @@ body {
   height: 250px;
   border-radius: 8px;
   overflow: hidden;
+}
+
+/* 🔥 Modal Background (Dark Themed) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🔥 Modal Box (Dark Themed) */
+.modal-content {
+  background-color: #1a1a1a;
+  padding: 25px;
+  border-radius: 8px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+  border: 1px solid #444;
+  color: #fff;
+}
+
+/* 🔥 Close Button */
+.close-btn {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ff5555;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* 🔥 Buttons inside the modal (Matches your social buttons) */
+.modal-btn {
+  display: block;
+  background-color: #bf7190;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+  margin: 10px auto;
+  width: 80%;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #c49a3f 0 -3px 0 inset;
+}
+
+.modal-btn:hover {
+  background-color: white;
+  color: #bf7190;
+  transform: translateY(-2px);
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 }
 
 

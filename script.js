@@ -31,6 +31,30 @@ document.addEventListener("DOMContentLoaded", function() {
   }, 1000);
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("personal-card-modal");
+  const btn = document.getElementById("personal-card-btn");
+  const closeBtn = document.querySelector(".close-btn");
+
+  // Open the modal when clicking the button
+  btn.addEventListener("click", function () {
+      modal.style.display = "flex";
+  });
+
+  // Close the modal when clicking the close button
+  closeBtn.addEventListener("click", function () {
+      modal.style.display = "none";
+  });
+
+  // Close the modal when clicking outside the modal content
+  window.addEventListener("click", function (event) {
+      if (event.target === modal) {
+          modal.style.display = "none";
+      }
+  });
+});
+
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
