@@ -4,53 +4,34 @@
 //
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  // 🌍 Check if Globe.js is loaded
-  if (typeof Globe !== "function") {
-    console.error("❌ Error: Globe.js is NOT loaded!");
-    return;
-  }
+document.addEventListener("DOMContentLoaded", function() {
   console.log("✅ Globe.js loaded successfully!");
 
-  // 🌍 Get the container
+  // Get the container
   const globeContainer = document.getElementById("globe-container");
   if (!globeContainer) {
-    console.error("❌ Error: #globe-container NOT found in DOM!");
-    return;
+      console.error("❌ Globe container not found!");
+      return;
   }
 
-  // 🌍 List of visited countries (ISO Alpha-3 codes)
-  const visitedCountries = ["USA", "FRA", "ITA", "ESP", "JPN"];
-
-  // 🌍 Initialize the globe
+  // Create a simple rotating globe
   const world = Globe()
-    .globeImageUrl("//unpkg.com/three-globe/example/img/earth-night.jpg")
-    .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
-    .backgroundColor("#000")
-    .showAtmosphere(true);
+      .globeImageUrl("//unpkg.com/three-globe/example/img/earth-night.jpg")
+      .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
+      .backgroundColor("#000"); // Dark background
 
-  // 🌍 Fetch world map data and highlight visited countries
-  fetch("https://unpkg.com/world-atlas@2/countries-110m.json")
-    .then(res => res.json())
-    .then(worldData => {
-      const countries = topojson.feature(worldData, worldData.objects.countries);
-      world
-        .hexPolygonsData(countries.features)
-        .hexPolygonResolution(3)
-        .hexPolygonMargin(0.3)
-        .hexPolygonColor(({ properties: d }) =>
-          visitedCountries.includes(d.ISO_A3) ? "rgba(0,255,0,0.7)" : "rgba(255,255,255,0.15)"
-        );
+  // Append the globe
+  globeContainer.appendChild(world.domElement);
 
-      // ✅ Append the world globe
-      globeContainer.appendChild(world().domElement);
-
-      // ✅ Make it spin
+  // Enable rotation
+  setTimeout(() => {
       world.controls().autoRotate = true;
-      world.controls().autoRotateSpeed = 0.5;
-    })
-    .catch(err => console.error("❌ Failed to load world data:", err));
+      world.controls().autoRotateSpeed = 0.3;
+      console.log("🌍 Globe rotation enabled");
+  }, 1000);
 });
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
   let fireCanvas, fireCtx;
