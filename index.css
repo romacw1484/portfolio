@@ -140,18 +140,22 @@ body {
     transform: translateY(2px);
 }
 
-/* Hero Right */
 .hero-right {
-  width: 260px; 
+  width: 300px;
+  height: 350px; /* Set a fixed height */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
   margin-right: 50px;
+  overflow: hidden; /* Crops overflowing content */
+  border-radius: 8px; /* Optional: round corners of the container */
 }
+
 .hero-avatar {
-  max-width: 150%;
-  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* This ensures the image fills the space and crops if necessary */
 }
 
 /* SIDEBAR */
